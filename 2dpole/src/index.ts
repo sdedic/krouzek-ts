@@ -1,3 +1,4 @@
+#!/usr/bin/node
 // import * as process from 'process';
 // import * as fn from './funkce';
 // import * as fs from 'fs';
@@ -7,7 +8,7 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 import promptSync from 'prompt-sync';
-import * as hra from './herniPomucky';
+import * as hra from './herniPomucky.js';
 import * as readline from 'readline';
 import chalk from 'chalk';
 
@@ -75,6 +76,7 @@ export function tick() {
     // UKOL 3: zarid, aby po "jidloSekund" jidlo zmizelo
     // UKOL 4: po zmizeni jidla se jidlo objevi jinde na planu
 }
+
 
 process.stdin.on("keypress", (a, x, y) => {
     stiskKlavesy(x.name);

@@ -1,7 +1,7 @@
 
 import chalk from 'chalk';
 import * as readline from 'readline';
-import { tick } from './index';
+import { tick } from './index.js';
 
 export type THraciPlan = string[][];
 export const kostka : string = '\u2588';
@@ -11,9 +11,18 @@ let hraciPlan : THraciPlan = [];
 export let sirka = -1;
 export let vyska = -1;
 
+const rl = readline.createInterface({
+    input: process.stdin, output: process.stdout
+});
+
+process.on("SIGINT", (x) => { 
+    zapniKurzor(true);
+    process.exit(0); 
+    return true;
+});
+
 export function zapniZnakovyRezim() {
-    readline.emitKeypressEvents(process.stdin);
-    process.stdin.setRawMode(true);
+    readline.emitKeypressEvents(process.stdin, rl);
 }
 
 export function zapniKurzor(viditelny: boolean) {
